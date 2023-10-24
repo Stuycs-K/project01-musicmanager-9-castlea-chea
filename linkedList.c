@@ -86,7 +86,7 @@ struct song_node * insert_front(struct song_node * list, char name[], char artis
 
 struct song_node * find_song(struct song_node* startOfList, char name[], char artist[]) {
   struct song_node *current = startOfList; // current struct node pointer points to front of list
-  struct song_node comparing = createnode(name,artist); // make a song node to song_compare
+  struct song_node comparing = *createnode(name,artist,NULL); // make a song node to song_compare
   while(song_compare(*current,comparing)!=SONG_EQUAL){
     current = current->next;
   }
@@ -95,7 +95,7 @@ struct song_node * find_song(struct song_node* startOfList, char name[], char ar
 
 struct song_node * find_artist(struct song_node* startOfList, char artist[]) {
   struct song_node *current = startOfList; // current struct node pointer points to front of list
-  struct song_node comparing = createnode(name,artist); // make a song node to song_compare
+  struct song_node comparing = *createnode("doesn't matter",artist,NULL); // make a song node to song_compare
   while(song_compare(*current,comparing)==ARTIST_LESS||song_compare(*current,comparing)==ARTIST_MORE){ // until artists are the same, incrememnt current node
     current = current->next;
   }
