@@ -6,10 +6,11 @@
 #include <unistd.h>
 #include <errno.h>
 
-int SONG_LESS = -2; // make constants for future reference
-int SONG_MORE = 2;
-int ARTIST_LESS = -1;
-int ARTIST_MORE = 1;
+int SONG_LESS = -1; // make constants for future reference
+int SONG_MORE = 1;
+int SONG_EQUAL = 0;
+int ARTIST_LESS = -2;
+int ARTIST_MORE = 2;
 
 int err(){
     printf("errno %d\n",errno);
@@ -32,8 +33,11 @@ int song_compare(struct song_node a, struct song_node b) {
     if(names<0){
       return SONG_LESS;
     }
-    else{
+    else if(names>0){
       return SONG_MORE;
+    }
+    else{
+      return SONG_EQUAL;
     }
   }
   else if(artists<0){
@@ -88,15 +92,24 @@ struct song_node * insert_front(struct song_node * list, char name[], char artis
     return createnode(name, artist, list);
 }
 
-/*
-struct song_node * find_song(char name[], char artist[]) {
 
+struct song_node * find_song(struct song_node* startOfList, char name[], char artist[]) {
+  struct song_node *current = startOfList; // current struct node pointer points to front of list
+  struct song_node comparing = *createnode(name,artist,NULL); // make a song node to song_compare
+  while(song_compare(*current,comparing)!=SONG_EQUAL){
+    current = current->next;
+  }
+  return current;
 }
 
-struct song_node * find_artist(char artist[]) {
-
+struct song_node * find_artist(struct song_node* startOfList, char artist[]) {
+  struct song_node *current = startOfList; // current struct node pointer points to front of list
+  struct song_node comparing = *createnode("doesn't matter",artist,NULL); // make a song node to song_compare
+  while(song_compare(*current,comparing)==ARTIST_LESS||song_compare(*current,comparing)==ARTIST_MORE){ // until artists are the same, incrememnt current node
+    current = current->next;
+  }
+  return current;
 }
-*/
 int get_size(struct song_node * list) {
     if(list == NULL) {
         return 0;
@@ -106,7 +119,8 @@ int get_size(struct song_node * list) {
         ++i;
     }
     return i;
-}
+
+/*
 
 struct song_node * find_random(struct song_node * list) {
     int rand;
