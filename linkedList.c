@@ -29,7 +29,16 @@ int song_compare(struct song_node a, struct song_node b) {
 }
 
 struct song_node insert(char name[], char artist[]) {
-
+  struct song_node newNode; //create a node with the values given
+  struct song_node *pointer = list; // make a pointer to the array of linked lists
+  strcpy(newNode.artist,artist);
+  strcpy(newNode.name,name);
+  while(song_compare(*pointer,newNode)==ARTIST_LESS){ //while the pointer has a lower value
+    pointer++;
+  }
+  if(song_compare(*pointer,newNode)==SONG_LESS){
+    pointer=pointer->next;
+  }
 }
 
 /*void print_list(struct song_node * start) {
