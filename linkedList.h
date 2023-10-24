@@ -21,9 +21,9 @@ struct song_node * find_song(char name[], char artist[]);
 
 struct song_node * find_artist(char artist[]);
 
-struct song_node * find_random();
+struct song_node * find_random(struct song_node * list);
 
-struct song_node * remove_song(char name[], char artist[]);
+struct song_node * remove_song(struct song_node * list, char name[], char artist[]);
 
 struct song_node * free_list(struct song_node * s);
 #endif

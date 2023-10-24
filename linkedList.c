@@ -2,11 +2,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <errno.h>
 
 int SONG_LESS = -2; // make constants for future reference
 int SONG_MORE = 2;
 int ARTIST_LESS = -1;
 int ARTIST_MORE = 1;
+
+int err(){
+    printf("errno %d\n",errno);
+    printf("%s\n",strerror(errno));
+    exit(1);
+}
 
 struct song_node* createnode(char s[], char a[], struct song_node* nx) {
     struct song_node *t = malloc(sizeof(struct song_node));
@@ -87,15 +96,40 @@ struct song_node * find_song(char name[], char artist[]) {
 struct song_node * find_artist(char artist[]) {
 
 }
-
-struct song_node * find_random() {
-
+*/
+int get_size(struct song_node * list) {
+    if(list == NULL) {
+        return 0;
+    }
+    int i = 1;
+    while((list = list->next)) {
+        ++i;
+    }
+    return i;
 }
 
+struct song_node * find_random(struct song_node * list) {
+    int rand;
+    int file = open("/dev/random", O_RDONLY);
+    if(read(file, &rand, sizeof(int)) == -1) {
+        err();
+    }
+    rand %= get_size(list);
+    if(rand < 0) {
+        rand = -1 * rand;
+    }
+    while(rand-- > 0) {
+        list = list->next;
+    }
+    close(file);
+    return list;
+}
+/*
 struct song_node * remove_song(char name[], char artist[]) {
 
 }
 */
+
 
 struct song_node * free_list(struct song_node * s) {
     if(s == NULL) {
