@@ -15,6 +15,12 @@ int main() {
     s1 = find_song(s0,"Hotel California","Eagles");
     printf("\nfind song 'Hotel California': \n\n");
     print_list(s1);
+    s1 = find_artist(s0,"TOTO");
+    printf("\nfind_artist TOTO: \n\n");
+    print_list(s1);
+    s1 = find_artist(s0, "Bon Jovi");
+    printf("\nfind_artist Bon Jovi: \n\n");
+    print_list(s1);
     s0 = free_list(s0);
     print_list(s0);
     return 0;
