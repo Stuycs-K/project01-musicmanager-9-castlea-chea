@@ -66,6 +66,9 @@ void print_node(struct song_node * s) {
 }
 
 void print_list(struct song_node * start) {
+    if(start == NULL) {
+        return;
+    }
     print_node(start);
     while((start = start->next)) {
         print_node(start);
