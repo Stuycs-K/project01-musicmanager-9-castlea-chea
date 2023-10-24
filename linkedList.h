@@ -7,6 +7,10 @@ struct song_node {
     struct song_node * next;
 };
 
+struct song_node ** library = malloc(sizeof(struct song_node*)*27);
+//library is pointer that points to pointers that point to linked lists representative of each letter + one for special characters
+//library malloc 27 struct song node pointers
+
 struct song_node * insert_front(struct song_node * list, char n[], char a[]);
 
 int song_compare(struct song_node a, struct song_node b);
