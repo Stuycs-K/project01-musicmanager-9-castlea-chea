@@ -11,13 +11,13 @@ struct song_node {
     struct song_node * next;
 };
 
-struct song_node list[27];
-
-struct song_node insert_front(char name[], char artist[]);
+struct song_node * insert_front(struct song_node * list, char n[], char a[]);
 
 int song_compare(struct song_node a, struct song_node b);
 
-struct song_node insert(char name[], char artist[]);
+struct song_node insert_song(char name[], char artist[]);
+
+void print_node(struct song_node * s);
 
 void print_list(struct song_node * start);
 
@@ -27,7 +27,7 @@ struct song_node * find_artist(char artist[]);
 
 struct song_node * find_random();
 
-struct song_node * remove(char name[], char artist[]);
+struct song_node * remove_song(char name[], char artist[]);
 
-struct song_node * free_list();
+struct song_node * free_list(struct song_node * s);
 #endif
