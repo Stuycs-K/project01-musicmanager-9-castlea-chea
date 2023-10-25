@@ -18,3 +18,23 @@ void add_song_nodes(struct song_node** library, struct song_node* song){
   if(library[i]!= NULL){insert_song(library[i],song->name,song->artist);}
   else{library[i]=song}
 }
+
+struct song_node* lib_find_song(struct song_node** library, char n[], char a[]) {
+    int i;
+    if(a[0] < 'a' || a[0] > 'z') {
+        i = 0;
+    } else {
+        i = a[0] - 'a' + 1;
+    }
+    return find_song(library[i], n, a);
+}
+
+struct song_node* lib_find_artist(struct song_node** library, char a[]) {
+    int i;
+    if(a[0] < 'a' || a[0] > 'z') {
+        i = 0;
+    } else {
+        i = a[0] - 'a' + 1;
+    }
+    return find_artist(library[i], a);
+}
