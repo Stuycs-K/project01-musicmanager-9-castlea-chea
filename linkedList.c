@@ -12,6 +12,7 @@ int SONG_EQUAL = 0;
 int ARTIST_LESS = -2;
 int ARTIST_MORE = 2;
 
+
 int err(){
     printf("errno %d\n",errno);
     printf("%s\n",strerror(errno));
