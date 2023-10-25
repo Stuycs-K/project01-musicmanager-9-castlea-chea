@@ -120,8 +120,8 @@ int get_size(struct song_node * list) {
         ++i;
     }
     return i;
+}
 
-/*
 
 struct song_node * find_random(struct song_node * list) {
     int rand;
@@ -139,11 +139,23 @@ struct song_node * find_random(struct song_node * list) {
     close(file);
     return list;
 }
-/*
-struct song_node * remove_song(char name[], char artist[]) {
 
+struct song_node * remove_song(struct song_node * list, char n[], char a[]) {
+    if(strcmp(list->artist, a) == 0 && strcmp(list->name, n) == 0) {
+        return list->next;
+    }
+    struct song_node * prev = list;
+    struct song_node * spare = list;
+    while((list = list->next)) {
+        if(strcmp(list->artist, a) == 0 && strcmp(list->name, n) == 0) {
+            prev->next = list->next;
+            free(list);
+            return spare;
+        }
+        prev = list;
+    }
+    return spare;
 }
-*/
 
 
 struct song_node * free_list(struct song_node * s) {
