@@ -76,6 +76,9 @@ struct song_node * insert_song(struct song_node * list, char name[], char artist
 }
 
 void print_node(struct song_node * s) {
+    if(s == NULL) {
+        return;
+    }
     printf("\"%s\" by %s\n", s->name, s->artist);
 }
 
@@ -96,18 +99,30 @@ struct song_node * insert_front(struct song_node * list, char name[], char artis
 
 struct song_node * find_song(struct song_node* startOfList, char name[], char artist[]) {
   struct song_node *current = startOfList; // current struct node pointer points to front of list
+  if(current == NULL) {
+        return NULL;
+    }
   struct song_node comparing = *createnode(name,artist,NULL); // make a song node to song_compare
   while(song_compare(*current,comparing)!=SONG_EQUAL){
     current = current->next;
+    if(current == NULL) {
+        return NULL;
+    }
   }
   return current;
 }
 
 struct song_node * find_artist(struct song_node* startOfList, char artist[]) {
   struct song_node *current = startOfList; // current struct node pointer points to front of list
+    if(current == NULL) {
+        return NULL;
+    }
   struct song_node comparing = *createnode("doesn't matter",artist,NULL); // make a song node to song_compare
   while(song_compare(*current,comparing)==ARTIST_LESS||song_compare(*current,comparing)==ARTIST_MORE){ // until artists are the same, incrememnt current node
     current = current->next;
+    if(current == NULL) {
+        return NULL;
+    }
   }
   return current;
 }
@@ -156,7 +171,6 @@ struct song_node * remove_song(struct song_node * list, char n[], char a[]) {
     }
     return spare;
 }
-
 
 struct song_node * free_list(struct song_node * s) {
     if(s == NULL) {
