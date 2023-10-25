@@ -1,4 +1,5 @@
 #include "linkedList.h"
+#include "library.h"
 #include <stdio.h>
 
 int main() {
