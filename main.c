@@ -42,5 +42,8 @@ int main() {
     printf("\nFreeing list, nothing should print below\n");
     s0 = free_list(s0);
     print_list(s0);
+
+    struct song_node** library = initialize_library();
+
     return 0;
 }
