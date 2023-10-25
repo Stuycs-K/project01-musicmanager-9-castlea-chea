@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
@@ -7,7 +8,7 @@ struct song_node {
     struct song_node * next;
 };
 
-struct song_node ** library = malloc(sizeof(struct song_node*)*27);
+struct song_node **library = malloc(256);
 //library is pointer that points to pointers that point to linked lists representative of each letter + one for special characters
 //library malloc 27 struct song node pointers
 
