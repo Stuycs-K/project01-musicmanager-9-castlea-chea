@@ -46,6 +46,18 @@ struct song_node* lib_find_artist(struct song_node** library, char a[]) {
     return find_artist(library[i], a);
 }
 
+
+void print_letter(struct song_node** library, char letter){
+  int index = (letter - 96);
+  if(library[index]!=NULL){
+    printf("%c: ", letter);
+    print_list(library[index]);
+  }
+  else{
+    printf("There are no artists under that letter");
+  }
+}
+
 void lib_clear(struct song_node** library) {
     for(int i = 0; i < 27; ++i) {
         library[i] = free_list(library[i]);

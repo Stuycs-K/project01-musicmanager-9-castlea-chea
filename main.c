@@ -48,5 +48,6 @@ int main() {
     add_song_nodes(library,"vienna","billy joel");
     add_song_nodes(library,"shape of you","ed sheeran");
     add_song_nodes(library,"piano man","billy joel");
+    print_letter(library, 'b');
     return 0;
 }
