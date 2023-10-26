@@ -58,6 +58,16 @@ void print_letter(struct song_node** library, char letter){
   }
 }
 
+void lib_remove_song(struct song_node** library, char n[], char a[]) {
+    int i;
+    if(a[0] < 'a' || a[0] > 'z') {
+        i = 0;
+    } else {
+        i = a[0] - 'a' + 1;
+    }
+    library[i] = remove_song(library[i], n, a);
+}
+
 void lib_clear(struct song_node** library) {
     for(int i = 0; i < 27; ++i) {
         library[i] = free_list(library[i]);
