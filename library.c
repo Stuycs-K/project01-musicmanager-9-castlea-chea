@@ -8,15 +8,22 @@
 #include <errno.h>
 
 struct song_node** initialize_library(){
-  struct song_node** library = malloc(27*sizeof(struct song_node));
+  struct song_node** library = malloc(27*sizeof(struct song_node*));
+  for(int i = 0; i < 27; ++i) {
+    library[i] = NULL;
+  }
   return library;
 }
 
 void add_song_nodes(struct song_node** library, char name[], char artist[]){
   int firstLetter = artist[0];
-  int i = firstLetter-96;
-  if(library[i]!= NULL){insert_song(library[i],name,artist);}
-  else{library[i]=createnode(name,artist,NULL);}
+  int i;
+  if(firstLetter < 'a' || firstLetter > 'z') {
+    i = 0;
+  } else {
+    i = firstLetter-'a' + 1;
+  }
+  library[i]=insert_song(library[i], name,artist);
 }
 
 struct song_node* lib_find_song(struct song_node** library, char n[], char a[]) {
@@ -49,4 +56,10 @@ void print_letter(struct song_node** library, char letter){
   else{
     printf("There are no artists under that letter");
   }
+}
+
+void lib_clear(struct song_node** library) {
+    for(int i = 0; i < 27; ++i) {
+        library[i] = free_list(library[i]);
+    }
 }
