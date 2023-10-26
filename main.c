@@ -51,11 +51,15 @@ int main() {
     print_letter(library, 'b');
     print_letter(library, 'c');
     print_letter(library, 'z');
+    printf("Shuffle 10 songs:\n");
+    shuffle(library, 10);
+    /*
     lib_remove_song(library, "vienna man", "billy joel");
     print_letter(library, 'b');
     lib_remove_song(library,"vienna", "billy joel");
     print_letter(library, 'b');
     lib_remove_song(library, "piano man", "billy joel");
     print_letter(library, 'b');
+    */
     return 0;
 }
