@@ -44,9 +44,13 @@ int main() {
     s0 = free_list(s0);
     print_list(s0);*/
     struct song_node** library = initialize_library();
-    add_song_nodes(library,"Havana","Camila Cabello");
-    add_song_nodes(library,"Vienna","Billy Joel");
-    add_song_nodes(library,"Shape Of You","Ed Sheeran");
-    add_song_nodes(library,"Piano Man","Billy Joel");
+    add_song_nodes(library,"havana","camila cabello");
+    add_song_nodes(library,"vienna","billy joel");
+    add_song_nodes(library,"shape of you","ed sheeran");
+    add_song_nodes(library,"piano man","billy joel");
+    add_song_nodes(library,"uptown girl","billy joel");
+    add_song_nodes(library,"i dont actually know ed sheeran very well","ed sheeran");
+    print_letter(library,'b');
+    print_letter(library,'e');
     return 0;
 }
