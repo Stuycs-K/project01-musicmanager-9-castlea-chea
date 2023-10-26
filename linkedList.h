@@ -8,6 +8,8 @@ struct song_node {
     struct song_node * next;
 };
 
+int err();
+
 struct song_node* createnode(char s[], char a[], struct song_node* nx);
 
 struct song_node * insert_front(struct song_node * list, char n[], char a[]);
