@@ -7,4 +7,5 @@ struct song_node* lib_find_song(struct song_node** library, char n[], char a[]);
 struct song_node* lib_find_artist(struct song_node** library, char a[]);
 void lib_remove_song(struct song_node** library, char n[], char a[]);
 void lib_clear(struct song_node** library);
+void shuffle(struct song_node** library, int n);
 #endif
