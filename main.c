@@ -53,5 +53,8 @@ int main() {
     //print_letter(library,'b');
     //print_letter(library,'e');
     print_lib(library);
+    print_letter(library, 'b');
+    print_letter(library, 'c');
+    print_letter(library, 'z');
     return 0;
 }

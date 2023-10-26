@@ -57,7 +57,7 @@ void print_letter(struct song_node** library, char letter){
     print_list(library[index]);
   }
   else{
-    printf("There are no artists under that letter");
+    printf("%c:\nNO SONGS\n", letter);
   }
 }
 
