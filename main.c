@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 int main() {
-    struct song_node * s0 = NULL;
+    /*struct song_node * s0 = NULL;
     s0 = insert_song(s0, "Africa", "TOTO");
     s0 = insert_song(s0, "Toccata and Fugue in D minor", "Johann Sebastian Bach");
     s0 = insert_song(s0, "Hotel California", "Eagles");
@@ -42,6 +42,8 @@ int main() {
     print_list(s0);
     printf("\nFreeing list, nothing should print below\n");
     s0 = free_list(s0);
-    print_list(s0);
+    print_list(s0);*/
+    struct song_node** library = initialize_library();
+    
     return 0;
 }
