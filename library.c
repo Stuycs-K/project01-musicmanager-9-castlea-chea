@@ -58,6 +58,33 @@ void print_letter(struct song_node** library, char letter){
   }
 }
 
+void shuffle(struct song_node** library, int n) {
+    int file = open("/dev/random", O_RDONLY);
+    while(--n >= 0) {
+        printf("a");
+        fflush(stdout);
+        int i = 0;
+        if(read(file, &i, 4) == -1) {
+            err();
+        }
+        i = i % 27;
+        printf("a");
+        fflush(stdout);
+        while(library[i] != NULL) {
+            if(read(file, &i, 4) == -1) {
+                err();
+            }
+            i = i % 27;
+        }
+        printf("a");
+        fflush(stdout);
+        struct song_node * list = library[i];
+        print_node(find_random(list));
+        fflush(stdout);
+    }
+    close(file);
+}
+
 void lib_remove_song(struct song_node** library, char n[], char a[]) {
     int i;
     if(a[0] < 'a' || a[0] > 'z') {
