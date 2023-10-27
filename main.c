@@ -48,6 +48,12 @@ int main() {
     add_song_nodes(library,"vienna","billy joel");
     add_song_nodes(library,"shape of you","ed sheeran");
     add_song_nodes(library,"piano man","billy joel");
+    add_song_nodes(library,"uptown girl","billy joel");
+    add_song_nodes(library,"strawberry fields","beatles");
+    add_song_nodes(library,"i dont actually know ed sheeran very well","ed sheeran");
+    //print_letter(library,'b');
+    //print_letter(library,'e');
+    print_lib(library);
     print_letter(library, 'b');
     print_letter(library, 'c');
     print_letter(library, 'z');
@@ -61,5 +67,7 @@ int main() {
     lib_remove_song(library, "piano man", "billy joel");
     print_letter(library, 'b');
     */
+    print_artist(library,"billy joel");
+    
     return 0;
 }

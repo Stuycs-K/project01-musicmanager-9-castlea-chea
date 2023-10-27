@@ -48,7 +48,10 @@ struct song_node* lib_find_artist(struct song_node** library, char a[]) {
 
 
 void print_letter(struct song_node** library, char letter){
-  int index = (letter - 96);
+  int index = 0;
+  if(letter>='a'&&letter<='z'){
+    index = (letter - 96);
+  }
   if(library[index]!=NULL){
     printf("%c:\n", letter);
     print_list(library[index]);
@@ -93,6 +96,27 @@ void lib_remove_song(struct song_node** library, char n[], char a[]) {
         i = a[0] - 'a' + 1;
     }
     library[i] = remove_song(library[i], n, a);
+void print_lib(struct song_node** library){
+  for(int i = 0; i<27; i++){
+    if(library[i]!=NULL){
+      if(i>0){printf("%c:\n", i+96);}
+      else{printf("misc characters:\n");}
+      print_list(library[i]);
+    }
+  }
+}
+
+void print_artist(struct song_node** library, char artist[]){
+  char firstLetter = artist[0];
+  int index = 0;
+  if(firstLetter>='a'&&firstLetter<='z'){
+    index = (firstLetter - 96);
+  }
+  struct song_node *current = find_artist(library[index],artist);
+  while(strcmp(current->artist,artist)==0){
+    print_node(current);
+    current=current->next;
+  }
 }
 
 void lib_clear(struct song_node** library) {
