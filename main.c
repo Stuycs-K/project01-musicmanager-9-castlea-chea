@@ -57,7 +57,23 @@ int main() {
     print_letter(library, 'b');
     print_letter(library, 'c');
     print_letter(library, 'z');
+    printf("Shuffle 10 songs:\n");
+    shuffle(library, 10);
+    printf("print artist billy joel:\n");
     print_artist(library,"billy joel");
-    
+    printf("removing all billy joel songs and printing him\n");
+    lib_remove_song(library, "vienna", "billy joel");
+    print_letter(library, 'b');
+    lib_remove_song(library,"piano man", "billy joel");
+    print_letter(library, 'b');
+    lib_remove_song(library, "uptown girl", "billy joel");
+    print_letter(library, 'b');
+    lib_remove_song(library, "uptown man", "billy joel");
+    print_letter(library, 'b');
+    printf("printing billy joel:\n");
+    print_artist(library,"billy joel");
+    printf("freeing library and printing it:\n");
+    lib_clear(library);
+    print_lib(library);
     return 0;
 }

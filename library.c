@@ -61,6 +61,43 @@ void print_letter(struct song_node** library, char letter){
   }
 }
 
+void shuffle(struct song_node** library, int n) {
+    int file = open("/dev/random", O_RDONLY);
+    while(--n >= 0) {
+        int i = 0;
+        if(read(file, &i, 4) == -1) {
+            err();
+        }
+        i = i % 27;
+        if(i < 0) {
+          i = -1 * i;
+        }
+        while(library[i] == NULL) {
+            if(read(file, &i, 4) == -1) {
+                err();
+            }
+            i = i % 27;
+            if(i < 0) {
+              i = -1 * i;
+            }
+        }
+        struct song_node * list = library[i];
+        list = find_random(list);
+        print_node(list);
+    }
+    close(file);
+}
+
+void lib_remove_song(struct song_node** library, char n[], char a[]) {
+    int i;
+    if(a[0] < 'a' || a[0] > 'z') {
+        i = 0;
+    } else {
+        i = a[0] - 'a' + 1;
+    }
+    library[i] = remove_song(library[i], n, a);
+}
+
 void print_lib(struct song_node** library){
   for(int i = 0; i<27; i++){
     if(library[i]!=NULL){
@@ -78,9 +115,15 @@ void print_artist(struct song_node** library, char artist[]){
     index = (firstLetter - 96);
   }
   struct song_node *current = find_artist(library[index],artist);
+  if(current == NULL) {
+    return;
+  }
   while(strcmp(current->artist,artist)==0){
     print_node(current);
     current=current->next;
+    if(current == NULL) {
+      return;
+    }
   }
 }
 
