@@ -44,6 +44,7 @@ int main() {
     s0 = free_list(s0);
     print_list(s0);*/
     struct song_node** library = initialize_library();
+    add_song_nodes(library, "##@@0", "<artist>");
     add_song_nodes(library,"havana","camila cabello");
     add_song_nodes(library,"vienna","billy joel");
     add_song_nodes(library,"shape of you","ed sheeran");
@@ -53,9 +54,15 @@ int main() {
     add_song_nodes(library,"i dont actually know ed sheeran very well","ed sheeran");
     //print_letter(library,'b');
     //print_letter(library,'e');
+    printf("Library:");
     print_lib(library);
+    printf("print <\n");
+    print_letter(library, '<');
+    printf("print b\n");
     print_letter(library, 'b');
+    printf("print c\n");
     print_letter(library, 'c');
+    printf("print z\n");
     print_letter(library, 'z');
     printf("Shuffle 10 songs:\n");
     shuffle(library, 10);
