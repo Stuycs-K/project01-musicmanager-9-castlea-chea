@@ -96,6 +96,8 @@ void lib_remove_song(struct song_node** library, char n[], char a[]) {
         i = a[0] - 'a' + 1;
     }
     library[i] = remove_song(library[i], n, a);
+}
+
 void print_lib(struct song_node** library){
   for(int i = 0; i<27; i++){
     if(library[i]!=NULL){
