@@ -56,5 +56,6 @@ int main() {
     print_letter(library, 'b');
     print_letter(library, 'c');
     print_letter(library, 'z');
+    print_artist(library,"billy joel");
     return 0;
 }

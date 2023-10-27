@@ -71,6 +71,19 @@ void print_lib(struct song_node** library){
   }
 }
 
+void print_artist(struct song_node** library, char artist[]){
+  char firstLetter = artist[0];
+  int index = 0;
+  if(firstLetter>='a'&&firstLetter<='z'){
+    index = (firstLetter - 96);
+  }
+  struct song_node *current = find_artist(library[index],artist);
+  while(strcmp(current->artist,artist)==0){
+    print_node(current);
+    current=current->next;
+  }
+}
+
 void lib_clear(struct song_node** library) {
     for(int i = 0; i < 27; ++i) {
         library[i] = free_list(library[i]);
